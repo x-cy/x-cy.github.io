@@ -7,26 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类 - Wilson&#39;s Blog</title>
+<title>Linq的3种查询方式 - Wilson&#39;s Blog</title>
 
 
-    <meta name="description" content="兴趣使然的软件开发狗">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wilson&#39;s Blog">
-<meta property="og:url" content="http://x-cy.github.io/categories/index.html">
+    <meta name="description" content="最后修改于：2016-06-01 09:36:16 12345678int[] numbers&#x3D;&amp;#123;2,5,28,31,17,16,42&amp;#125;;var numsQuery&#x3D;from n in numbers        &#x2F;&#x2F;查询语法			  where n&lt;20			  select n;var numsMethod&#x3D;numbers.Where(x&#x3D;&gt;x&lt;20);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linq的3种查询方式">
+<meta property="og:url" content="http://x-cy.github.io/2016/06/01/DotNet/linquse/index.html">
 <meta property="og:site_name" content="Wilson&#39;s Blog">
-<meta property="og:description" content="兴趣使然的软件开发狗">
+<meta property="og:description" content="最后修改于：2016-06-01 09:36:16 12345678int[] numbers&#x3D;&amp;#123;2,5,28,31,17,16,42&amp;#125;;var numsQuery&#x3D;from n in numbers        &#x2F;&#x2F;查询语法			  where n&lt;20			  select n;var numsMethod&#x3D;numbers.Where(x&#x3D;&gt;x&lt;20);">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
+<meta property="article:published_time" content="2016-06-01T01:39:24.000Z">
+<meta property="article:modified_time" content="2020-01-29T16:30:18.311Z">
 <meta property="article:author" content="Wilson">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Github">
 <meta property="article:tag" content="DotNet">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="MSSQL">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://x-cy.github.io/images/og_image.png">
 
@@ -86,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Wilson&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="Linq的3种查询方式" height="28">
             
             </a>
         </div>
@@ -100,7 +95,7 @@
                 <a class="navbar-item"
                 href="/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -136,66 +131,115 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2016-06-01T01:39:24.000Z">2016-06-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/DotNet/">DotNet</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 51 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Linq的3种查询方式
+            
+        </h1>
+        <div class="content">
+            <p><code>最后修改于：2016-06-01 09:36:16</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] numbers=&#123;<span class="number">2</span>,<span class="number">5</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">17</span>,<span class="number">16</span>,<span class="number">42</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> numsQuery=from n in numbers        <span class="comment">//查询语法</span></span><br><span class="line">			  where n&lt;<span class="number">20</span></span><br><span class="line">			  select n;</span><br><span class="line"><span class="keyword">var</span> numsMethod=numbers.Where(x=&gt;x&lt;<span class="number">20</span>); <span class="comment">//方法语法</span></span><br><span class="line"><span class="keyword">var</span> numsCount=(from n in numbers       <span class="comment">//两种形式的组合</span></span><br><span class="line">			  where n&lt;<span class="number">20</span></span><br><span class="line">			  select n).Count();</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DotNet/" rel="tag">DotNet</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/DotNet/">
-            <span class="level-start">
-                <span class="level-item">DotNet</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/HTML/">
-            <span class="level-start">
-                <span class="level-item">HTML</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Hexo/">
-            <span class="level-start">
-                <span class="level-item">Hexo</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/">
-            <span class="level-start">
-                <span class="level-item">Java</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Linux/">
-            <span class="level-start">
-                <span class="level-item">Linux</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/MSSQL/">
-            <span class="level-start">
-                <span class="level-item">MSSQL</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2016/06/01/JavaScript/uploader_ie8/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">uploader在ie8下出现保存窗口</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2016/04/10/MSSQL/identity/">
+                <span class="level-item">Sql插入数据后立即返回插入的数据</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -915,7 +959,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Wilson&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="Linq的3种查询方式" height="28">
                 
                 </a>
                 <p class="is-size-7">

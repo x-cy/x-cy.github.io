@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Linux下重置MySQL的root密码 - Pumpkin’Blog</title>
+<title>Linux 下重置 MySQL 的 root 密码 - Pumpkin’Blog</title>
 
 
-    <meta name="description" content="最后修改于：2016-04-10 00:47:27原文链接：http:&#x2F;&#x2F;www.bkjia.com&#x2F;sjkqy&#x2F;835601.html 很久没用MySQL了，最近在学JAVA又捡起来了，不过把root密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。 1. 进入到mysql里面：执行命令 1cd &#x2F;etc&#x2F;mysql">
+    <meta name="description" content="最后修改于：2016-04-10 00:47:27原文链接：http:&#x2F;&#x2F;www.bkjia.com&#x2F;sjkqy&#x2F;835601.html 很久没用 MySQL 了，最近在学 JAVA 又捡起来了，不过把 root 密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。 1. 进入到 mysql 里面：执行命令 1cd &#x2F;etc&#x2F;mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下重置MySQL的root密码">
+<meta property="og:title" content="Linux 下重置 MySQL 的 root 密码">
 <meta property="og:url" content="http://x-cy.github.io/2016/04/10/Linux-MySQL/index.html">
 <meta property="og:site_name" content="Pumpkin’Blog">
-<meta property="og:description" content="最后修改于：2016-04-10 00:47:27原文链接：http:&#x2F;&#x2F;www.bkjia.com&#x2F;sjkqy&#x2F;835601.html 很久没用MySQL了，最近在学JAVA又捡起来了，不过把root密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。 1. 进入到mysql里面：执行命令 1cd &#x2F;etc&#x2F;mysql">
+<meta property="og:description" content="最后修改于：2016-04-10 00:47:27原文链接：http:&#x2F;&#x2F;www.bkjia.com&#x2F;sjkqy&#x2F;835601.html 很久没用 MySQL 了，最近在学 JAVA 又捡起来了，不过把 root 密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。 1. 进入到 mysql 里面：执行命令 1cd &#x2F;etc&#x2F;mysql">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
 <meta property="article:published_time" content="2016-04-09T16:47:24.000Z">
-<meta property="article:modified_time" content="2020-01-29T16:30:43.316Z">
+<meta property="article:modified_time" content="2020-01-30T11:05:30.426Z">
 <meta property="article:author" content="Pumpkin">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="MySQL">
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/author.png" alt="Linux下重置MySQL的root密码" height="28">
+                <img src="/images/author.png" alt="Linux 下重置 MySQL 的 root 密码" height="28">
             
             </a>
         </div>
@@ -160,28 +160,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Linux下重置MySQL的root密码
+                Linux 下重置 MySQL 的 root 密码
             
         </h1>
         <div class="content">
             <p><code>最后修改于：2016-04-10 00:47:27</code><br><code>原文链接：http://www.bkjia.com/sjkqy/835601.html</code></p>
-<p>很久没用MySQL了，最近在学JAVA又捡起来了，不过把root密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。</p>
-<h3 id="1-进入到mysql里面："><a href="#1-进入到mysql里面：" class="headerlink" title="1. 进入到mysql里面："></a>1. 进入到mysql里面：</h3><p>执行命令</p>
+<p>很久没用 MySQL 了，最近在学 JAVA 又捡起来了，不过把 root 密码忘记了，网上查了下资料解决了，在这记录一下，以防以后又忘了。</p>
+<h3 id="1-进入到-mysql-里面："><a href="#1-进入到-mysql-里面：" class="headerlink" title="1. 进入到 mysql 里面："></a>1. 进入到 mysql 里面：</h3><p>执行命令</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/mysql</span><br></pre></td></tr></table></figure>
 
-<a id="more"></a> 
+<a id="more"></a>
 
-<p>进入mysql默认安装目录下</p>
-<p>使用vim编辑器查看里面的用户名和密码</p>
+<p>进入 mysql 默认安装目录下</p>
+<p>使用 vim 编辑器查看里面的用户名和密码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim/vi debian.cnf</span><br></pre></td></tr></table></figure>
 
-<p>然后使用这个文件中的用户名和密码进入mysql</p>
-<p>假如debian.cnf中的用户名为debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code><br>按回车，这时需要你输入密码，复制<code>debian.cnf</code>中的密码（不要手动输入，因为容易产生错误）。</p>
-<p>此时你就能进入到mysql里面了。</p>
-<h3 id="2-修改root密码"><a href="#2-修改root密码" class="headerlink" title="2. 修改root密码"></a>2. 修改root密码</h3><p>根据上一步登录mysql客户端</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">Database changed		</span><br><span class="line">mysql&gt; update user set password=password(<span class="string">'new password'</span>) where user=<span class="string">'root'</span>;</span><br><span class="line">Query OK, <span class="number">4</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span>	</span></span><br><span class="line"><span class="function">Rows matched: 4  Changed: 4  Warnings: 0</span></span><br><span class="line"><span class="function">mysql&gt; flush privileges</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function">mysql&gt; quit</span></span><br></pre></td></tr></table></figure>
+<p>然后使用这个文件中的用户名和密码进入 mysql</p>
+<p>假如 debian.cnf 中的用户名为 debian-sys-maint,则：<code>mysql -u debian-sys-maint -p</code><br>按回车，这时需要你输入密码，复制<code>debian.cnf</code>中的密码（不要手动输入，因为容易产生错误）。</p>
+<p>此时你就能进入到 mysql 里面了。</p>
+<h3 id="2-修改-root-密码"><a href="#2-修改-root-密码" class="headerlink" title="2. 修改 root 密码"></a>2. 修改 root 密码</h3><p>根据上一步登录 mysql 客户端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; update user set password=password(<span class="string">'new password'</span>) where user=<span class="string">'root'</span>;</span><br><span class="line">Query OK, <span class="number">4</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function">Rows matched: 4  Changed: 4  Warnings: 0</span></span><br><span class="line"><span class="function">mysql&gt; flush privileges</span>;</span><br><span class="line">Query OK, <span class="number">0</span> <span class="function">rows <span class="title">affected</span> <span class="params">(<span class="number">0.00</span> sec)</span></span></span><br><span class="line"><span class="function">mysql&gt; quit</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-修改完成-用新改的root和密码登录查看。"><a href="#3-修改完成-用新改的root和密码登录查看。" class="headerlink" title="3. 修改完成,用新改的root和密码登录查看。"></a>3. 修改完成,用新改的root和密码登录查看。</h3>
+<h3 id="3-修改完成-用新改的-root-和密码登录查看。"><a href="#3-修改完成-用新改的-root-和密码登录查看。" class="headerlink" title="3. 修改完成,用新改的 root 和密码登录查看。"></a>3. 修改完成,用新改的 root 和密码登录查看。</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -314,7 +314,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -490,6 +490,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/30/Java/javaoutline/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="A Simple Post">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-30T11:22:47.879Z">2020-01-30</time></div>
+                    <a href="/2020/01/30/Java/javaoutline/" class="title has-link-black-ter is-size-6 has-text-weight-normal">A Simple Post</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/29/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
@@ -564,25 +583,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2016/06/01/DotNet/linquse/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linq的3种查询方式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2016-06-01T01:39:24.000Z">2016-06-01</time></div>
-                    <a href="/2016/06/01/DotNet/linquse/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linq的3种查询方式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/DotNet/">DotNet</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -600,7 +600,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -706,6 +706,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/30/Java/javaoutline/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="A Simple Post">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-30T11:22:47.879Z">2020-01-30</time></div>
+                    <a href="/2020/01/30/Java/javaoutline/" class="title has-link-black-ter is-size-6 has-text-weight-normal">A Simple Post</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/29/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
@@ -780,25 +799,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2016/06/01/DotNet/linquse/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linq的3种查询方式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2016-06-01T01:39:24.000Z">2016-06-01</time></div>
-                    <a href="/2016/06/01/DotNet/linquse/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linq的3种查询方式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/DotNet/">DotNet</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -816,7 +816,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -915,7 +915,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/author.png" alt="Linux下重置MySQL的root密码" height="28">
+                    <img src="/images/author.png" alt="Linux 下重置 MySQL 的 root 密码" height="28">
                 
                 </a>
                 <p class="is-size-7">

@@ -7,20 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>favorite - Pumpkin’Blog</title>
+<title>Lombok 插件注解使用详解 - Pumpkin’Blog</title>
 
 
-    <meta name="description" content="最后更新于：2016-04-11 09:48:38Movies   .hexo-image-steam-lazy {display:none;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rg">
-<meta property="og:type" content="website">
-<meta property="og:title" content="favorite">
-<meta property="og:url" content="http://x-cy.github.io/favorite/index.html">
+    <meta name="description" content="官方文档Lombok featuresLombok javadoc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lombok 插件注解使用详解">
+<meta property="og:url" content="http://x-cy.github.io/2019/10/22/Java/lombok/index/index.html">
 <meta property="og:site_name" content="Pumpkin’Blog">
-<meta property="og:description" content="最后更新于：2016-04-11 09:48:38Movies   .hexo-image-steam-lazy {display:none;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rg">
+<meta property="og:description" content="官方文档Lombok featuresLombok javadoc">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-01-30T14:06:56.067Z">
-<meta property="article:modified_time" content="2020-01-30T14:06:56.067Z">
+<meta property="article:published_time" content="2019-10-22T05:51:00.000Z">
+<meta property="article:modified_time" content="2020-01-30T14:24:53.302Z">
 <meta property="article:author" content="Pumpkin">
+<meta property="article:tag" content="Lombok">
+<meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://x-cy.github.io/images/og_image.png">
 
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/author.png" alt="favorite" height="28">
+                <img src="/images/author.png" alt="Lombok 插件注解使用详解" height="28">
             
             </a>
         </div>
@@ -100,7 +102,7 @@
                 <a class="navbar-item"
                 href="/tags">Tags | 标签</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/favorite">Favorite | 收藏</a>
                 
                 <a class="navbar-item"
@@ -137,48 +139,101 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-22T05:51:00.000Z">2019-10-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Java/">Java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 238 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                favorite
+                Lombok 插件注解使用详解
             
         </h1>
         <div class="content">
-            <p><code>最后更新于：2016-04-11 09:48:38</code><br>Movies </p>
-<hr>
-<script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:none;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3%;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:1px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style><figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww3.sinaimg.cn/bmiddle/e724cbefgw1f28cepm5koj212y1jke0e.jpg"><img src="http://ww3.sinaimg.cn/bmiddle/e724cbefgw1f28cepm5koj212y1jke0e.jpg"><figcaption><a href="https://movie.douban.com/subject/5327268/">荒野猎人</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww1.sinaimg.cn/bmiddle/e724cbefgw1f1f9l931ldj21bn1xgb29.jpg"><img src="http://ww1.sinaimg.cn/bmiddle/e724cbefgw1f1f9l931ldj21bn1xgb29.jpg"><figcaption><a href="http://movie.douban.com/subject/3718279/">死侍</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww2.sinaimg.cn/bmiddle/e724cbefgw1f0bqlp5gw8j21hc276e81.jpg"><img src="http://ww2.sinaimg.cn/bmiddle/e724cbefgw1f0bqlp5gw8j21hc276e81.jpg"><figcaption><a href="http://movie.douban.com/subject/1306029/">美丽心灵</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww2.sinaimg.cn/bmiddle/e724cbefgw1f2i92m4srhj20su15otir.jpg"><img src="http://ww2.sinaimg.cn/bmiddle/e724cbefgw1f2i92m4srhj20su15otir.jpg"><figcaption><a href="https://movie.douban.com/subject/25945280/">我的特工爷爷</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww4.sinaimg.cn/cmw218/67717086jw1f4em224yx4j20b90gomzv.jpg"><img src="http://ww4.sinaimg.cn/cmw218/67717086jw1f4em224yx4j20b90gomzv.jpg"><figcaption><a href="https://movie.douban.com/subject/24750534/">蝙蝠侠大战超人：正义黎明</a>
-</figcaption></figure>
+            <p>官方文档<br><a href="https://projectlombok.org/features/all">Lombok features</a><br><a href="https://projectlombok.org/api/">Lombok javadoc</a></p>
+<a id="more"></a>
 
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww3.sinaimg.cn/mw690/967bb989jw1f4fk76mgzoj20b90go0w8.jpg"><img src="http://ww3.sinaimg.cn/mw690/967bb989jw1f4fk76mgzoj20b90go0w8.jpg"><figcaption><a href="https://movie.douban.com/subject/25820460/">美国队长3</a>
-</figcaption></figure>
 
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="http://ww4.sinaimg.cn/mw690/967bb989jw1f4fk2plhdij20b30godkx.jpg"><img src="http://ww4.sinaimg.cn/mw690/967bb989jw1f4fk2plhdij20b30godkx.jpg"><figcaption>800x600 <a href="https://movie.douban.com/subject/21441132/">爱丽丝梦游仙境2：镜中奇遇记</a>
-</figcaption></figure></div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
-<h2 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h2><script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:none;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:0 0.05% 3%;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:1px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style><figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s27123141.jpg"><img src="https://img3.doubanio.com/lpic/s27123141.jpg"><figcaption><a href="https://book.douban.com/subject/25762168/">Java核心技术·卷1：基础知识（原书第9版）</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s28038862.jpg"><img src="https://img3.doubanio.com/lpic/s28038862.jpg"><figcaption><a href="https://book.douban.com/subject/25841326/">Java核心技术（卷2）：高级特性（原书第9版）</a>
-</figcaption></figure>
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s6477220.jpg"><img src="https://img3.doubanio.com/lpic/s6477220.jpg"><figcaption><a href="https://book.douban.com/subject/6387053/">C# 4.0图解教程</a>
-</figcaption></figure>
+<blockquote>
+<p><code>val</code><br>Finally! Hassle-free final local variables.</p>
+</blockquote>
+<blockquote>
+<p><code>var</code><br>Mutably! Hassle-free local variables.</p>
+</blockquote>
+<blockquote>
+<p><code>@NonNull</code><br>or: How I learned to stop worrying and love the NullPointerException.</p>
+</blockquote>
+<blockquote>
+<p><code>@Cleanup</code><br>Automatic resource management: Call your close() methods safely with no hassle.</p>
+</blockquote>
+<blockquote>
+<p><code>@Getter/@Setter</code><br>Never write public int getFoo() {return foo;} again.</p>
+</blockquote>
+<blockquote>
+<p><code>@ToString</code><br>No need to start a debugger to see your fields: Just let lombok generate a toString for you!</p>
+</blockquote>
+<blockquote>
+<p><code>@EqualsAndHashCode</code><br>Equality made easy: Generates hashCode and equals implementations from the fields of your object..</p>
+</blockquote>
+<blockquote>
+<p><code>@NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor</code><br>Constructors made to order: Generates constructors that take no arguments, one argument per final / non-&gt; nullfield, or one argument for every field.</p>
+</blockquote>
+<blockquote>
+<p><code>@Data</code><br>All together now: A shortcut for @ToString, @EqualsAndHashCode, @Getter on all fields, and @Setter on all non-final fields, and @RequiredArgsConstructor!</p>
+</blockquote>
+<blockquote>
+<p><code>@Value</code><br>Immutable classes made very easy.</p>
+</blockquote>
+<blockquote>
+<p><code>@Builder</code><br>… and Bob’s your uncle: No-hassle fancy-pants APIs for object creation!</p>
+</blockquote>
+<blockquote>
+<p><code>@SneakyThrows</code><br>To boldly throw checked exceptions where no one has thrown them before!</p>
+</blockquote>
+<blockquote>
+<p><code>@Synchronized</code><br>synchronized done right: Don’t expose your locks.</p>
+</blockquote>
+<!--more-->
 
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s28372513.jpg"><img src="https://img3.doubanio.com/lpic/s28372513.jpg"><figcaption><a href="https://book.douban.com/subject/26697422/">深入理解JavaScript</a>
-</figcaption></figure>
+<blockquote>
+<p><code>@With</code><br>Immutable ‘setters’ - methods that create a clone but with one changed field.</p>
+</blockquote>
+<!--more-->
 
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s8958650.jpg"><img src="https://img3.doubanio.com/lpic/s8958650.jpg"><figcaption><a href="https://book.douban.com/subject/10546125/">JavaScript高级程序设计（第3版）</a>
-</figcaption></figure>
+<blockquote>
+<p><code>@Getter(lazy=true)</code><br>Laziness is a virtue!</p>
+</blockquote>
+<blockquote>
+<p><code>@Log</code><br>Captain’s Log, stardate 24435.7: “What was that line again?”</p>
+</blockquote>
+<blockquote>
+<p><code>experimental</code><br>Head to the lab: The new stuff we’re working on.</p>
+</blockquote>
+<p>更新日期：2019-10-22</p>
 
-<figure><img class="hexo-image-steam-lazy nofancy" src="http://ww4.sinaimg.cn/large/e724cbefgw1etyppy7bgwg2001001017.gif" data-original="https://img3.doubanio.com/lpic/s6245861.jpg"><img src="https://img3.doubanio.com/lpic/s6245861.jpg"><figcaption><a href="高性能JavaScript">高性能JavaScript</a>
-</figcaption></figure>
-</div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
-
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Lombok/" rel="tag">Lombok</a>, <a class="has-link-grey -link" href="/tags/Tools/" rel="tag">Tools</a>
+                </div>
+            </div>
         </div>
         
         
@@ -252,6 +307,27 @@
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/29/hello-world/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hello World</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/13/Java/javaoutline/index/">
+                <span class="level-item">Java 知识大纲整理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -984,7 +1060,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/author.png" alt="favorite" height="28">
+                    <img src="/images/author.png" alt="Lombok 插件注解使用详解" height="28">
                 
                 </a>
                 <p class="is-size-7">

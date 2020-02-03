@@ -7,35 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类 - Pumpkin’Blog</title>
+<title>使用快慢指针判断链表中的环 - Pumpkin’Blog</title>
 
 
-    <meta name="description" content="兴趣使然的软件开发狗">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pumpkin’Blog">
-<meta property="og:url" content="http://x-cy.github.io/categories/index.html">
+    <meta name="description" content="快慢指针中，因为每一次移动后，快指针都会比慢指针多走一个节点，所以他们之间在进入环状链表后，不论相隔多少个节点，慢指针总会被快指针赶上并且重合，此时就可以判断必定有环。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用快慢指针判断链表中的环">
+<meta property="og:url" content="http://x-cy.github.io/2019/07/23/java/java-algorithm-ring/index.html">
 <meta property="og:site_name" content="Pumpkin’Blog">
-<meta property="og:description" content="兴趣使然的软件开发狗">
+<meta property="og:description" content="快慢指针中，因为每一次移动后，快指针都会比慢指针多走一个节点，所以他们之间在进入环状链表后，不论相隔多少个节点，慢指针总会被快指针赶上并且重合，此时就可以判断必定有环。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
+<meta property="article:published_time" content="2019-07-23T04:18:00.000Z">
+<meta property="article:modified_time" content="2020-02-03T07:18:53.534Z">
 <meta property="article:author" content="Pumpkin">
-<meta property="article:tag" content="springboot">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="swagger-ui">
-<meta property="article:tag" content="DotNet">
-<meta property="article:tag" content="HTML">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="redis">
-<meta property="article:tag" content="MSSQL">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="web">
-<meta property="article:tag" content="Lombok">
-<meta property="article:tag" content="Tools">
-<meta property="article:tag" content="mac">
-<meta property="article:tag" content="soft">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://x-cy.github.io/images/og_image.png">
 
@@ -95,7 +80,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
+                <img src="/images/author.png" alt="使用快慢指针判断链表中的环" height="28">
             
             </a>
         </div>
@@ -109,7 +94,7 @@
                 <a class="navbar-item"
                 href="/archives">Archives | 档案</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/categories">Categories | 分类</a>
                 
                 <a class="navbar-item"
@@ -151,106 +136,138 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-23T04:18:00.000Z">2019-07-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 126 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                使用快慢指针判断链表中的环
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>快慢指针中，因为每一次移动后，快指针都会比慢指针多走一个节点，所以他们之间在进入环状链表后，不论相隔多少个节点，慢指针总会被快指针赶上并且重合，此时就可以判断必定有环。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode low = head;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        low = low.next;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> (low.equals(fast)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Blog/">
-            <span class="level-start">
-                <span class="level-item">Blog</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/DotNet/">
-            <span class="level-start">
-                <span class="level-item">DotNet</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/HTML/">
-            <span class="level-start">
-                <span class="level-item">HTML</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Linux/">
-            <span class="level-start">
-                <span class="level-item">Linux</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/MSSQL/">
-            <span class="level-start">
-                <span class="level-item">MSSQL</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/java/">
-            <span class="level-start">
-                <span class="level-item">java</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/java/SpringBoot/">
-            <span class="level-start">
-                <span class="level-item">SpringBoot</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/mac/">
-            <span class="level-start">
-                <span class="level-item">mac</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/soft/">
-            <span class="level-start">
-                <span class="level-item">soft</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/soft/winsows/">
-            <span class="level-start">
-                <span class="level-item">winsows</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/web/">
-            <span class="level-start">
-                <span class="level-item">web</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="/images/logo.png" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+                
+<a class="button is-danger donate" href="/images/logo.png" target="_blank" rel="noopener">
+    <span class="icon is-small">
+        <i class="fab fa-patreon"></i>
+    </span>
+    <span>Patreon</span>
+</a>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/08/java/java-springboot-swaggerui/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">swagger-ui升级swagger-bootstrap-ui</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/13/java/javaoutline/index/">
+                <span class="level-item">Java 知识大纲整理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -1220,7 +1237,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
+                    <img src="/images/author.png" alt="使用快慢指针判断链表中的环" height="28">
                 
                 </a>
                 <p class="is-size-7">

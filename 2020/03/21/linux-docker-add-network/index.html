@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-03-21T04:48:50.000Z">
-<meta property="article:modified_time" content="2020-03-21T05:03:50.952Z">
+<meta property="article:modified_time" content="2020-03-21T09:14:13.185Z">
 <meta property="article:author" content="Pumpkin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://x-cy.github.io/images/og_image.png">
@@ -167,9 +167,9 @@
 <p>方法二：使用自定义网络</p>
 <ol>
 <li><p>查看docker网络</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure></li>
 <li><p>创建连接方式为bridge的网络，my-bridge为自定义网络的名字</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge my-bridge</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge my-bridge</span><br></pre></td></tr></table></figure></li>
 <li><p>将容器连接到自定义网络</p>
 <ol>
 <li>手动连接<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">    docker network connect my-bridage my-container-id</span><br></pre></td></tr></table></figure></li>

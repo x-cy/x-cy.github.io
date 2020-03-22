@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-03-18T08:44:00.000Z">
-<meta property="article:modified_time" content="2020-03-19T11:57:38.069Z">
+<meta property="article:modified_time" content="2020-03-21T09:13:38.347Z">
 <meta property="article:author" content="Pumpkin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="docker">
@@ -175,7 +175,7 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> vi /etc/docker/daemon.json</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://registry.docker-cn.com"</span>,</span><br><span class="line">    <span class="string">"http://hub-mirror.c.163.com"</span>,</span><br><span class="line">    <span class="string">"https://pee6w651.mirror.aliyuncs.com"</span>,</span><br><span class="line">    <span class="string">"https://docker.mirrors.ustc.edu.cn"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"registry-mirrors"</span>: [</span><br><span class="line">      <span class="string">"https://registry.docker-cn.com"</span>,</span><br><span class="line">      <span class="string">"http://hub-mirror.c.163.com"</span>,</span><br><span class="line">      <span class="string">"https://pee6w651.mirror.aliyuncs.com"</span>,</span><br><span class="line">      <span class="string">"https://docker.mirrors.ustc.edu.cn"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>或者</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"registry-mirrors"</span>: [<span class="string">"https://uxk0ognt.mirror.aliyuncs.com/"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

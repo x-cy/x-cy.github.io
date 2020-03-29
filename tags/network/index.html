@@ -7,22 +7,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Sql插入数据后立即返回插入的数据 - Pumpkin’Blog</title>
+<title>标签: network - Pumpkin’Blog</title>
 
 
-    <meta name="description" content="最后修改于：2016-04-10 01:09:04  在mssql里@@identity可用来返回当前插入的新数据的主键值，于是想到了返回整条数据：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Sql插入数据后立即返回插入的数据">
-<meta property="og:url" content="https://www.flynoob.com/post/56005.html">
+    <meta name="description" content="兴趣使然的软件开发狗">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pumpkin’Blog">
+<meta property="og:url" content="https://www.flynoob.com/tags/network/index.html">
 <meta property="og:site_name" content="Pumpkin’Blog">
-<meta property="og:description" content="最后修改于：2016-04-10 01:09:04  在mssql里@@identity可用来返回当前插入的新数据的主键值，于是想到了返回整条数据：">
+<meta property="og:description" content="兴趣使然的软件开发狗">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.flynoob.com/images/og_image.png">
-<meta property="article:published_time" content="2016-04-09T17:08:00.000Z">
-<meta property="article:modified_time" content="2020-03-22T04:22:53.490Z">
 <meta property="article:author" content="Pumpkin">
-<meta property="article:tag" content="sql">
-<meta property="article:tag" content="mssql">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.flynoob.com/images/og_image.png">
 
@@ -90,7 +86,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/author.png" alt="Sql插入数据后立即返回插入的数据" height="28">
+                <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
             
             </a>
         </div>
@@ -145,127 +141,68 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">network</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-04-09T17:08:00.000Z">2016-04-10</time>
+                <time class="level-item has-text-grey" datetime="2020-03-21T04:48:00.000Z">2020-03-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Sql/">Sql</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Sql/MsSql/">MsSql</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Docker/">Docker</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 56 个字)
+                    1 分钟 读完 (大约 192 个字)
                 </span>
                 
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Sql插入数据后立即返回插入的数据
+                <a class="has-link-black-ter" href="/post/25215.html">Docker 容器间的相互通信</a>
             
         </h1>
         <div class="content">
-            <p><code>最后修改于：2016-04-10 01:09:04</code></p>
-<blockquote>
-<p>在mssql里<code>@@identity</code>可用来返回当前插入的新数据的主键值，于是想到了返回整条数据：</p>
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">User</span>( username , authguid ) <span class="keyword">VALUES</span> ( <span class="string">'zhangsan'</span>, NEWID() )</span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">User</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">Id</span> = @@<span class="keyword">identity</span>;</span><br></pre></td></tr></table></figure>
+            <hr>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/mssql/" rel="tag">mssql</a>, <a class="has-link-grey -link" href="/tags/sql/" rel="tag">sql</a>
+                <a class="button is-size-7 is-light" href="/post/25215.html#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
-        <div class="bdsharebuttonbox">
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-</div>
-<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？请作者喝杯☕️吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/logo.png" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/logo.png" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/10325.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Linq的3种查询方式</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/14477.html">
-                <span class="level-item">Linux 下重置 MySQL 的 root 密码</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 </div>
@@ -1554,7 +1491,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                     
-                    <img src="/images/author.png" alt="Sql插入数据后立即返回插入的数据" height="28">
+                    <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
                     
                 </a>
                 <span id="runtime_span">本站已勉强运⾏ --- 天 -- ⼩时 -- 分 -- 秒</span>

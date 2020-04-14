@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: cmd - Pumpkin’Blog</title>
+<title>外部js调用vue的methods中的方法 - Pumpkin’Blog</title>
 
 
-    <meta name="description" content="兴趣使然的软件开发狗">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pumpkin’Blog">
-<meta property="og:url" content="https://www.flynoob.com/tags/cmd/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="外部js调用vue的methods中的方法">
+<meta property="og:url" content="https://www.flynoob.com/post/41003509.html">
 <meta property="og:site_name" content="Pumpkin’Blog">
-<meta property="og:description" content="兴趣使然的软件开发狗">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.flynoob.com/images/og_image.png">
+<meta property="article:published_time" content="2020-04-14T01:48:00.000Z">
+<meta property="article:modified_time" content="2020-04-14T01:55:08.938Z">
 <meta property="article:author" content="Pumpkin">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.flynoob.com/images/og_image.png">
 
@@ -86,7 +89,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
+                <img src="/images/author.png" alt="外部js调用vue的methods中的方法" height="28">
             
             </a>
         </div>
@@ -141,69 +144,122 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">cmd</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-09T12:28:00.000Z">2020-03-09</time>
+                <time class="level-item has-text-grey" datetime="2020-04-14T01:48:00.000Z">2020-04-14</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Soft/">Soft</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Soft/Windows/">Windows</a>
+                <a class="has-link-grey -link" href="/categories/Web/">Web</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Web/Vue/">Vue</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 65 个字)
+                    几秒 读完 (大约 82 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/post/10595.html"> Windows命令行关闭本地占用的端口</a>
+                外部js调用vue的methods中的方法
             
         </h1>
         <div class="content">
-            <p>1.查找对应的端口占用的进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat  -aon|findstr  &quot;8080&quot;</span><br></pre></td></tr></table></figure>
+            <hr>
+<a id="more"></a>
+
+<p><a href="https://www.jianshu.com/p/7fd56816cf39">原文链接</a></p>
+<p>methods里面定义的方法, 需要赋值给JavaScrip的全局对象window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">   data() &#123;</span><br><span class="line">       <span class="keyword">return</span> &#123;</span><br><span class="line">           title: <span class="string">'首页'</span>,</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">        <span class="comment">// methods里面定义的方法赋值给window</span></span><br><span class="line">       <span class="built_in">window</span>.jingli = <span class="keyword">this</span>.jingli;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        jingli() &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'Hello world!'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以通过调用<code>jingli()</code>来调用<code>vue</code>的<code>methods</code>中的 <code>jingli()</code></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/post/10595.html#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>, <a class="has-link-grey -link" href="/tags/vue/" rel="tag">vue</a>, <a class="has-link-grey -link" href="/tags/web/" rel="tag">web</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？请作者喝杯☕️吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/a858bcac.html">
+                <span class="level-item">iStat Menus 的安装与激活</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -1600,7 +1656,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                     
-                    <img src="/images/author.png" alt="Pumpkin’Blog" height="28">
+                    <img src="/images/author.png" alt="外部js调用vue的methods中的方法" height="28">
                     
                 </a>
                 <span id="runtime_span">本站已勉强运⾏ --- 天 -- ⼩时 -- 分 -- 秒</span>

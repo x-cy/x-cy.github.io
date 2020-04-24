@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.flynoob.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-18T06:43:00.000Z">
-<meta property="article:modified_time" content="2020-03-22T04:22:53.000Z">
+<meta property="article:modified_time" content="2020-04-24T07:21:05.319Z">
 <meta property="article:author" content="Pumpkin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="docker">
@@ -161,7 +161,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 177 个字)
+                    1 分钟 读完 (大约 193 个字)
                 </span>
                 
                 
@@ -190,7 +190,8 @@ var _hmt = _hmt || [];
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>运行容器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mymysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">--name mymysql \</span><br><span class="line">-v $PWD/conf:/etc/mysql/conf.d \</span><br><span class="line">-v $PWD/logs:/logs \</span><br><span class="line">-v $PWD/data:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">-d \</span><br><span class="line">mysql:5.7 \</span><br><span class="line">--lower_case_table_names=1</span><br></pre></td></tr></table></figure>
+<p>lower_case_table_names：表名忽略大小写</p>
 </li>
 <li><p>查看容器的运行信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>

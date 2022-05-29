@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>MyBatis-Plus 的快速入门 - Pumpkin’Blog</title>
+
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis-Plus 的快速入门">
+<meta property="og:url" content="http://x-cy.github.io/post/e1f79887.html">
+<meta property="og:site_name" content="Pumpkin’Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://x-cy.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-13T05:54:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T04:25:07.121Z">
+<meta property="article:author" content="Pumpkin">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="mybatis">
+<meta property="article:tag" content="mybatisplus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://x-cy.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?7f728115f73ec980eecbc8903d92a7cf";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://fastly.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/author.png" alt="MyBatis-Plus 的快速入门" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home | 主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives | 档案</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories | 分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags | 标签</a>
+                
+                <a class="navbar-item"
+                href="/favorite">Favorite | 收藏</a>
+                
+                <a class="navbar-item"
+                href="/timeline">Timeline | 时间轴</a>
+                
+                <a class="navbar-item"
+                href="/about">About | 关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-13T05:54:00.000Z">2020-05-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Java/SpringBoot/">SpringBoot</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 分钟 读完 (大约 3119 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                MyBatis-Plus 的快速入门
+            
+        </h1>
+        <div class="content">
+            <hr>
+<a id="more"></a>
+
+<p>本文为转载，仅做备忘记录，侵删</p>
+<ul>
+<li>原作者：<a href="https://github.com/tyronczt">tyronczt</a></li>
+<li>原地址：<a href="https://github.com/tyronczt/java-learn/tree/master/Tools/mybatis-plus">https://github.com/tyronczt/java-learn/tree/master/Tools/mybatis-plus</a></li>
+</ul>
+<hr>
+<p><a href="https://github.com/baomidou/mybatis-plus">MyBatis-Plus</a>（简称 MP）是一个 <a href="http://www.mybatis.org/mybatis-3/">MyBatis</a> 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
+<p>MyBatis-Plus的特点：</p>
+<ul>
+<li>润物无声：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑；</li>
+<li>效率至上：只需简单配置，即可快速进行 CRUD 操作，从而节省大量时间；</li>
+<li>丰富功能：热加载、代码生成、分页、性能分析等功能一应俱全。</li>
+</ul>
+<p>本文主要基于 MyBatis-Plus 的<strong>官方文档</strong>：<a href="https://mybatis.plus/guide/">https://mybatis.plus/guide/</a> 及 慕课网的 <strong>MyBatis-Plus入门</strong>：<a href="https://www.imooc.com/learn/1130">https://www.imooc.com/learn/1130</a> 进行案例说明。</p>
+<p>快速开始参考官方文档：<a href="https://mybatis.plus/guide/quick-start.html#初始化工程">https://mybatis.plus/guide/quick-start.html</a>【很详细】</p>
+<p>本项目GitHub地址：<a href="https://github.com/tyronczt/java-learn/tree/master/Tools/mybatis-plus">https://github.com/tyronczt/java-learn/tree/master/Tools/mybatis-plus</a></p>
+<h3 id="CRUD–增加-Create"><a href="#CRUD–增加-Create" class="headerlink" title="CRUD–增加(Create)"></a>CRUD–增加(Create)</h3><p>GitHub地址：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/InsertTest.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/InsertTest.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setName(<span class="string">"彭万里"</span>);</span><br><span class="line">    user.setAge(<span class="number">39</span>);</span><br><span class="line">    user.setCreateTime(LocalDateTime.now());</span><br><span class="line">    user.setManagerId(<span class="number">1088248166370832385L</span>);</span><br><span class="line">    <span class="keyword">int</span> effectNum = userMapper.insert(user);</span><br><span class="line">    Assert.assertEquals(<span class="number">1</span>, effectNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CRUD–读取-Retrieve"><a href="#CRUD–读取-Retrieve" class="headerlink" title="CRUD–读取(Retrieve)"></a>CRUD–读取(Retrieve)</h3><p>GitHub地址：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/SelectTests.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/SelectTests.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 1、名字中包含雨并且年龄小于40</span></span><br><span class="line"><span class="comment">    * name like '%雨%' and age&lt;40</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ? AND age &lt; ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 40(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>).lt(User::getAge, <span class="number">40</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 2、名字中包含雨年并且龄大于等于20且小于等于40并且email不为空</span></span><br><span class="line"><span class="comment">    * name like '%雨%' and age between 20 and 40 and email is not null</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ? AND age BETWEEN ? AND ? AND email IS NOT NULL)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 20(Integer), 40(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>).between(User::getAge, <span class="number">20</span>, <span class="number">40</span>).isNotNull(User::getEmail));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 3、名字为王姓或者年龄大于等于25，按照年龄降序排列，年龄相同按照id升序排列</span></span><br><span class="line"><span class="comment">    * name like '王%' or age&gt;=25 order by age desc,id asc</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ? OR age &gt;= ?) ORDER BY age DESC , id ASC</span></span><br><span class="line"><span class="comment">    * Parameters: 王%(String), 25(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().likeRight(User::getName, <span class="string">"王"</span>)</span><br><span class="line">               .or().ge(User::getAge, <span class="number">25</span>).orderByDesc(User::getAge).orderByAsc(User::getId));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 4、创建日期大于当天并且直属上级为名字为王姓</span></span><br><span class="line"><span class="comment">    * date_format(create_time,'%Y-%m-%d')&gt;= LocalDate.now() and manager_id in (select id from user where name like '王%')</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (date_format(create_time,'%Y-%m-%d') &gt;= ? AND manager_id IN</span></span><br><span class="line"><span class="comment">    * (select id from user where name like '王%'))</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * Parameters: 2020-04-19(LocalDate)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectFour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().apply(<span class="string">"date_format(create_time,'%Y-%m-%d') &gt;= &#123;0&#125;"</span>, LocalDate.now()).</span><br><span class="line">               inSql(User::getManagerId, <span class="string">"select id from user where name like '王%'"</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 5、名字为王姓并且（年龄小于40或邮箱不为空）</span></span><br><span class="line"><span class="comment">    * name like '王%' and (age&lt;40 or email is not null)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ? AND ( (age &lt; ? OR email IS NOT NULL) ))</span></span><br><span class="line"><span class="comment">    * 王%(String), 40(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectFive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().likeRight(User::getName, <span class="string">"王"</span>).</span><br><span class="line">               and(i -&gt; i.lt(User::getAge, <span class="number">40</span>).or().isNotNull(User::getEmail)));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 6、名字为王姓或者（年龄小于40并且年龄大于20并且邮箱不为空）</span></span><br><span class="line"><span class="comment">    * name like '王%' or (age&lt;40 and age&gt;20 and email is not null)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ? OR ( (age &lt; ? AND age &gt; ? AND email IS NOT NULL) ))</span></span><br><span class="line"><span class="comment">    * 王%(String), 40(Integer), 20(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectSix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().likeRight(User::getName, <span class="string">"王"</span>).</span><br><span class="line">               or(i -&gt; i.lt(User::getAge, <span class="number">40</span>).gt(User::getAge, <span class="number">20</span>).isNotNull(User::getEmail)));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 7、（年龄小于40或邮箱不为空）并且名字为王姓</span></span><br><span class="line"><span class="comment">    * (age&lt;40 or email is not null) and name like '王%'</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (( (age &lt; ? OR email IS NOT NULL) ) AND name LIKE ?)</span></span><br><span class="line"><span class="comment">    * 40(Integer), 王%(String)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectSeven</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().and(i -&gt; i.lt(User::getAge, <span class="number">40</span>).</span><br><span class="line">               or().isNotNull(User::getEmail)).likeRight(User::getName, <span class="string">"王"</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 8、年龄为30、31、34、35</span></span><br><span class="line"><span class="comment">    * age in (30、31、34、35)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (age IN (?,?,?,?))</span></span><br><span class="line"><span class="comment">    * 30(Integer), 31(Integer), 34(Integer), 35(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectEight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().in(User::getAge, Arrays.asList(<span class="number">30</span>, <span class="number">31</span>, <span class="number">34</span>, <span class="number">35</span>)));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 9、只返回满足条件的其中一条语句即可</span></span><br><span class="line"><span class="comment">    * limit 1</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (age IN (?,?,?,?)) limit 1</span></span><br><span class="line"><span class="comment">    * 30(Integer), 31(Integer), 34(Integer), 35(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectNine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().in(User::getAge, Arrays.asList(<span class="number">30</span>, <span class="number">31</span>, <span class="number">34</span>, <span class="number">35</span>)).last(<span class="string">"limit 1"</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 10、名字中包含雨并且年龄小于40(需求1加强版)</span></span><br><span class="line"><span class="comment">    * 第一种情况：select id,name</span></span><br><span class="line"><span class="comment">    * from user</span></span><br><span class="line"><span class="comment">    * where name like '%雨%' and age&lt;40</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,name FROM user WHERE (name LIKE ? AND age &lt; ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 40(Integer)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * 第二种情况：select id,name,age,email</span></span><br><span class="line"><span class="comment">    * from user</span></span><br><span class="line"><span class="comment">    * where name like '%雨%' and age&lt;40</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,name,email,age FROM user WHERE (name LIKE ? AND age &lt; ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 40(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectTen1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().select(User::getId, User::getName).like(User::getName, <span class="string">"雨"</span>).lt(User::getAge, <span class="number">40</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectTen2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(new QueryWrapper&lt;User&gt;().lambda().select(User.class, one -&gt; !one.getColumn().equals("create_time")</span><br><span class="line">               &amp;&amp; !one.getColumn().equals(<span class="string">"manager_id"</span>)).like(User::getName, <span class="string">"雨"</span>).lt(User::getAge, <span class="number">40</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 11、按照直属上级分组，查询每组的平均年龄、最大年龄、最小年龄。并且只取年龄总和小于500的组。</span></span><br><span class="line"><span class="comment">    * select avg(age) avg_age,min(age) min_age,max(age) max_age</span></span><br><span class="line"><span class="comment">    * from user group by manager_id</span></span><br><span class="line"><span class="comment">    * having sum(age) &lt;500</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT avg(age) avg_age,min(age) min_age,max(age) max_age FROM user GROUP BY manager_id HAVING sum(age) &lt; ?</span></span><br><span class="line"><span class="comment">    * Parameters: 500(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectEleven</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;Map&lt;String, Object&gt;&gt; users = userMapper.selectMaps(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().select(<span class="string">"avg(age) avg_age"</span>, <span class="string">"min(age) min_age"</span>, <span class="string">"max(age) max_age"</span>).lambda().</span><br><span class="line">               groupBy(User::getManagerId).having(<span class="string">"sum(age) &lt; &#123;0&#125;"</span>, <span class="number">500</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 12、按条件查询用户，姓名为王(查询条件有姓名和email）</span></span><br><span class="line"><span class="comment">    * 当email为空时，不作为查询条件</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %王%(String)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectTwelve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       String name = <span class="string">"王"</span>;</span><br><span class="line">       String email = <span class="string">""</span>;</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(StringUtils.isNotEmpty(name), User::getName, name).</span><br><span class="line">               like(StringUtils.isNotEmpty(email), User::getEmail, email));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据 Wrapper 条件，查询全部记录。注意： 只返回第一个字段的值</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    * result: &lt;==      Total: 3</span></span><br><span class="line"><span class="comment">    * 1094590409767661570</span></span><br><span class="line"><span class="comment">    * 1094592041087729666</span></span><br><span class="line"><span class="comment">    * 1251822253776068610</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectObjs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;Object&gt; users = userMapper.selectObjs(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据 Wrapper 条件，查询总记录数</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT COUNT( 1 ) FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    * 查询数量：3</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Integer count = userMapper.selectCount(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>));</span><br><span class="line">       System.out.println(<span class="string">"查询数量："</span> + count);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据 entity 条件，查询一条记录</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?) limit 1</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectOneUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user = userMapper.selectOne(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>).last(<span class="string">"limit 1"</span>));</span><br><span class="line">       System.out.println(<span class="string">"查询用户："</span> + user);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 通过map查询列表</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name = ? AND age = ?)</span></span><br><span class="line"><span class="comment">    * Parameters: 李艺伟(String), 28(Integer)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectAlleq</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       HashMap&lt;String, Object&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">       hashMap.put(<span class="string">"name"</span>, <span class="string">"李艺伟"</span>);</span><br><span class="line">       hashMap.put(<span class="string">"age"</span>, <span class="number">28</span>);</span><br><span class="line">       hashMap.put(<span class="string">"email"</span>, <span class="keyword">null</span>);</span><br><span class="line">       List&lt;User&gt; users = userMapper.selectList(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().allEq(hashMap, <span class="keyword">false</span>));</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 为了减少实现类的代码量 --&gt; LambdaQueryChainWrapper</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * Preparing: SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectLambdaQueryChainWrapper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = <span class="keyword">new</span> LambdaQueryChainWrapper&lt;&gt;(userMapper).like(User::getName, <span class="string">"雨"</span>).list();</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/*********************************分页方法***************************************/</span></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?) LIMIT ?,?</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 0(Long), 2(Long)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * User(id=1094590409767661570, name=张雨琪, age=31, email=zjq@baomidou.com, managerId=1088248166370832385, createTime=2019-01-14T09:15:15)</span></span><br><span class="line"><span class="comment">    * User(id=1094592041087729666, name=刘红雨, age=32, email=lhm@baomidou.com, managerId=1088248166370832385, createTime=2019-01-14T09:48:16)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Page&lt;User&gt; page = <span class="keyword">new</span> Page&lt;&gt;(<span class="number">1</span>, <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">       IPage&lt;User&gt; userIPage = userMapper.selectPage(page, <span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>));</span><br><span class="line">       List&lt;User&gt; records = userIPage.getRecords();</span><br><span class="line">       records.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Preparing: SELECT name FROM user WHERE (name LIKE ?) LIMIT ?,?</span></span><br><span class="line"><span class="comment">    * Parameters: %雨%(String), 0(Long), 2(Long)</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * &#123;name=张雨琪&#125;</span></span><br><span class="line"><span class="comment">    * &#123;name=刘红雨&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectMapsPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Page&lt;User&gt; page = <span class="keyword">new</span> Page&lt;&gt;(<span class="number">1</span>, <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">       IPage&lt;Map&lt;String, Object&gt;&gt; userIPage = userMapper.selectMapsPage(page, <span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().select(User::getName).like(User::getName, <span class="string">"雨"</span>));</span><br><span class="line">       List&lt;Map&lt;String, Object&gt;&gt; records = userIPage.getRecords();</span><br><span class="line">       records.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CRUD–更新-Update"><a href="#CRUD–更新-Update" class="headerlink" title="CRUD–更新(Update)"></a>CRUD–更新(Update)</h3><p>GitHub地址：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/UpdateTest.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/UpdateTest.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据Id更新记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * UPDATE user SET email=? WHERE id=?</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: aaa@aa.com(String), 1251822253776068610(Long)</span></span><br><span class="line"><span class="comment">    * &lt;==    Updates: 1</span></span><br><span class="line"><span class="comment">    * 更新记录数：1</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user = <span class="keyword">new</span> User();</span><br><span class="line">       user.setId(<span class="number">1251822253776068610L</span>);</span><br><span class="line">       user.setEmail(<span class="string">"aaa@aa.com"</span>);</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.updateById(user);</span><br><span class="line">       System.out.println(<span class="string">"更新记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据条件更新记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: UPDATE user SET age=? WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 30(Integer), %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 3</span></span><br><span class="line"><span class="comment">    * 更新记录数：3</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByWapper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user = <span class="keyword">new</span> User();</span><br><span class="line">       user.setAge(<span class="number">30</span>);</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.update(user, <span class="keyword">new</span> UpdateWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>));</span><br><span class="line">       System.out.println(<span class="string">"更新记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据条件更新记录(不设置实体类）</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: UPDATE user SET age=? WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 31(Integer), %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 3</span></span><br><span class="line"><span class="comment">    * 更新记录数：3</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByWapperNoEntity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       UpdateWrapper&lt;User&gt; updateWrapper = <span class="keyword">new</span> UpdateWrapper&lt;&gt;();</span><br><span class="line">       updateWrapper.like(<span class="string">"name"</span>, <span class="string">"雨"</span>).set(<span class="string">"age"</span>, <span class="number">31</span>);</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.update(<span class="keyword">null</span>, updateWrapper);</span><br><span class="line">       System.out.println(<span class="string">"更新记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 通过lambda链并根据条件更新记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: UPDATE user SET age=? WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 32(Integer), %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 3</span></span><br><span class="line"><span class="comment">    * 是否更新成功：true</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByWapperLambdaChain</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">boolean</span> ifUpdate = <span class="keyword">new</span> LambdaUpdateChainWrapper&lt;&gt;(userMapper).like(User::getName, <span class="string">"雨"</span>).set(User::getAge, <span class="number">32</span>).update();</span><br><span class="line">       System.out.println(<span class="string">"是否更新成功："</span> + ifUpdate);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CRUD–删除-Delete"><a href="#CRUD–删除-Delete" class="headerlink" title="CRUD–删除(Delete)"></a>CRUD–删除(Delete)</h3><p>GitHub地址：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/DeleteTest.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/DeleteTest.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据id删除记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: DELETE FROM user WHERE id=?</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 1251736344246480897(Long)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 1</span></span><br><span class="line"><span class="comment">    * 影响记录数：1</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.deleteById(<span class="number">1251736344246480897L</span>);</span><br><span class="line">       System.out.println(<span class="string">"影响记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据map删除记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: DELETE FROM user WHERE name = ?</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 彭万里(String)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 1</span></span><br><span class="line"><span class="comment">    * 影响记录数：1</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteByMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Map&lt;String, Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">       columnMap.put(<span class="string">"name"</span>, <span class="string">"彭万里"</span>);</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.deleteByMap(columnMap);</span><br><span class="line">       System.out.println(<span class="string">"影响记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 批量删除记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: DELETE FROM user WHERE id IN ( ? , ? )</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 1259468580001419266(Long), 1259468591753863169(Long)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 2</span></span><br><span class="line"><span class="comment">    * 影响记录数：2</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteBatchIds</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.deleteBatchIds(Arrays.asList(<span class="number">1259468580001419266L</span>, <span class="number">1259468591753863169L</span>));</span><br><span class="line">       System.out.println(<span class="string">"影响记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据条件删除记录</span></span><br><span class="line"><span class="comment">    * &lt;p&gt;</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: DELETE FROM user WHERE (name = ?)</span></span><br><span class="line"><span class="comment">    * ==&gt;  Parameters: 欧阳雨(String)</span></span><br><span class="line"><span class="comment">    * &lt;==  Updates: 1</span></span><br><span class="line"><span class="comment">    * 影响记录数：1</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteByWapper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> effectNum = userMapper.delete(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().eq(User::getName, <span class="string">"欧阳雨"</span>));</span><br><span class="line">       System.out.println(<span class="string">"影响记录数："</span> + effectNum);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AR模式"><a href="#AR模式" class="headerlink" title="AR模式"></a>AR模式</h3><p>GitHub地址：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/ARModelTest.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/ARModelTest.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * AR 模式新增记录</span></span><br><span class="line"><span class="comment">   * 需要在User类中继承Model&lt;User&gt;</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * ==&gt;  Preparing: INSERT INTO user ( id, create_time, name, manager_id, age ) VALUES ( ?, ?, ?, ?, ? )</span></span><br><span class="line"><span class="comment">   * ==&gt;  Parameters: 1259474874313797634(Long), 2020-05-10T21:26:24.419(LocalDateTime), 哈哈哈(String), 1088248166370832385(Long), 29(Integer)</span></span><br><span class="line"><span class="comment">   * &lt;==  Updates: 1</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setName(<span class="string">"哈哈哈"</span>);</span><br><span class="line">      user.setAge(<span class="number">29</span>);</span><br><span class="line">      user.setCreateTime(LocalDateTime.now());</span><br><span class="line">      user.setManagerId(<span class="number">1088248166370832385L</span>);</span><br><span class="line">      <span class="keyword">boolean</span> ifInsert = user.insert();</span><br><span class="line">      Assert.assertEquals(<span class="keyword">true</span>, ifInsert);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * ==&gt;  Preparing: SELECT id,create_time,name,manager_id,email,age FROM user WHERE id=?</span></span><br><span class="line"><span class="comment">   * ==&gt;  Parameters: 1259474874313797634(Long)</span></span><br><span class="line"><span class="comment">   * &lt;==  Columns: id, create_time, name, manager_id, email, age</span></span><br><span class="line"><span class="comment">   * &lt;==  Row: 1259474874313797634, 2020-05-10 11:26:24, 哈哈哈, 1088248166370832385, null, 29</span></span><br><span class="line"><span class="comment">   * &lt;==  Total: 1</span></span><br><span class="line"><span class="comment">   * User(id=1259474874313797634, name=哈哈哈, age=29, email=null, managerId=1088248166370832385, createTime=2020-05-10T11:26:24)</span></span><br><span class="line"><span class="comment">   * false</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setId(<span class="number">1259474874313797634L</span>);</span><br><span class="line">      User selectUser = user.selectById();</span><br><span class="line">      System.out.println(selectUser);</span><br><span class="line">      System.out.println(user == selectUser);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * ==&gt; Preparing: UPDATE user SET age=? WHERE id=?</span></span><br><span class="line"><span class="comment">   * ==&gt; Parameters: 30(Integer), 1259474874313797634(Long)</span></span><br><span class="line"><span class="comment">   * &lt;==    Updates: 1</span></span><br><span class="line"><span class="comment">   * true</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setId(<span class="number">1259474874313797634L</span>);</span><br><span class="line">      user.setAge(<span class="number">30</span>);</span><br><span class="line">      <span class="keyword">boolean</span> ifUpdate = user.updateById();</span><br><span class="line">      System.out.println(ifUpdate);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * ==&gt; Preparing: DELETE FROM user WHERE id=?</span></span><br><span class="line"><span class="comment">   * ==&gt; Parameters: 1259474874313797634(Long)</span></span><br><span class="line"><span class="comment">   * &lt;==    Updates: 1</span></span><br><span class="line"><span class="comment">   * true</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      User user = <span class="keyword">new</span> User();</span><br><span class="line">      user.setId(<span class="number">1259474874313797634L</span>);</span><br><span class="line">      <span class="keyword">boolean</span> ifDelete = user.deleteById();</span><br><span class="line">      System.out.println(ifDelete);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务类接口"><a href="#服务类接口" class="headerlink" title="服务类接口"></a>服务类接口</h3><p>GitHub：<a href="https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/ServiceTest.java">https://github.com/tyronczt/java-learn/blob/master/Tools/mybatis-plus/src/test/java/com/tyron/mp/ServiceTest.java</a></p>
+<p>服务接口需要继承IService，形如：extends IService<User></User></p>
+<p>服务接口实现类需要继承ServiceImpl，形如：extends ServiceImpl&lt;UserMapper, User&gt;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 批量保存</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: INSERT INTO user ( id, name, age ) VALUES ( ?, ?, ? )</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 1259497162086076417(Long), 张华(String), 33(Integer)</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 1259497162241265666(Long), 岳华(String), 32(Integer)</span></span><br><span class="line"><span class="comment">    * true</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveBatch</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user1 = <span class="keyword">new</span> User();</span><br><span class="line">       user1.setName(<span class="string">"张华"</span>);</span><br><span class="line">       user1.setAge(<span class="number">33</span>);</span><br><span class="line"></span><br><span class="line">       User user2 = <span class="keyword">new</span> User();</span><br><span class="line">       user2.setName(<span class="string">"岳华"</span>);</span><br><span class="line">       user2.setAge(<span class="number">32</span>);</span><br><span class="line">       List&lt;User&gt; userList = Arrays.asList(user1, user2);</span><br><span class="line">       <span class="keyword">boolean</span> saveBatch = userService.saveBatch(userList);</span><br><span class="line">       System.out.println(saveBatch);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 批量保存或更新</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: INSERT INTO user ( id, name, age ) VALUES ( ?, ?, ? )</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 1259497692317458433(Long), 张华(String), 31(Integer)</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: SELECT id,create_time,name,manager_id,email,age FROM user WHERE id=?</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 1259497162241265666(Long)</span></span><br><span class="line"><span class="comment">    * &lt;==    Columns: id, create_time, name, manager_id, email, age</span></span><br><span class="line"><span class="comment">    * &lt;==        Row: 1259497162241265666, null, 岳华, null, null, 32</span></span><br><span class="line"><span class="comment">    * &lt;==      Total: 1</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: UPDATE user SET name=?, age=? WHERE id=?</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 岳华花(String), 30(Integer), 1259497162241265666(Long)</span></span><br><span class="line"><span class="comment">    * true</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveOrUpdateBatch</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user1 = <span class="keyword">new</span> User();</span><br><span class="line">       user1.setName(<span class="string">"张华"</span>);</span><br><span class="line">       user1.setAge(<span class="number">31</span>);</span><br><span class="line"></span><br><span class="line">       User user2 = <span class="keyword">new</span> User();</span><br><span class="line">       user2.setId(<span class="number">1259497162241265666L</span>);</span><br><span class="line">       user2.setName(<span class="string">"岳华花"</span>);</span><br><span class="line">       user2.setAge(<span class="number">30</span>);</span><br><span class="line">       List&lt;User&gt; userList = Arrays.asList(user1, user2);</span><br><span class="line">       <span class="keyword">boolean</span> saveBatch = userService.saveOrUpdateBatch(userList);</span><br><span class="line">       System.out.println(saveBatch);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Expected one result (or null) to be returned by selectOne(), but found: 2</span></span><br><span class="line"><span class="comment">    * 增加false参数</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==    Columns: id, create_time, name, manager_id, email, age</span></span><br><span class="line"><span class="comment">    * &lt;==        Row: 1094590409767661570, 2019-01-14 09:15:15, 张雨琪, 1088248166370832385, zjq@baomidou.com, 32</span></span><br><span class="line"><span class="comment">    * &lt;==        Row: 1094592041087729666, 2019-01-14 09:48:16, 刘红雨, 1088248166370832385, lhm@baomidou.com, 32</span></span><br><span class="line"><span class="comment">    * &lt;==      Total: 2</span></span><br><span class="line"><span class="comment">    * Warn: execute Method There are  2 results.</span></span><br><span class="line"><span class="comment">    * User(id=1094590409767661570, name=张雨琪, age=32, email=zjq@baomidou.com, managerId=1088248166370832385, createTime=2019-01-14T09:15:15)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       User user = userService.getOne(<span class="keyword">new</span> QueryWrapper&lt;User&gt;().lambda().like(User::getName, <span class="string">"雨"</span>), <span class="keyword">false</span>);</span><br><span class="line">       System.out.println(user);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * selectList</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: SELECT id,create_time,name,manager_id,email,age FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==    Columns: id, create_time, name, manager_id, email, age</span></span><br><span class="line"><span class="comment">    * &lt;==        Row: 1094590409767661570, 2019-01-14 09:15:15, 张雨琪, 1088248166370832385, zjq@baomidou.com, 32</span></span><br><span class="line"><span class="comment">    * &lt;==        Row: 1094592041087729666, 2019-01-14 09:48:16, 刘红雨, 1088248166370832385, lhm@baomidou.com, 32</span></span><br><span class="line"><span class="comment">    * &lt;==      Total: 2</span></span><br><span class="line"><span class="comment">    * User(id=1094590409767661570, name=张雨琪, age=32, email=zjq@baomidou.com, managerId=1088248166370832385, createTime=2019-01-14T09:15:15)</span></span><br><span class="line"><span class="comment">    * User(id=1094592041087729666, name=刘红雨, age=32, email=lhm@baomidou.com, managerId=1088248166370832385, createTime=2019-01-14T09:48:16)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       List&lt;User&gt; users = userService.lambdaQuery().like(User::getName, <span class="string">"雨"</span>).list();</span><br><span class="line">       users.forEach(System.out::println);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    *按条件更新记录</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: UPDATE user SET age=? WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: 28(Integer), %雨%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==    Updates: 2</span></span><br><span class="line"><span class="comment">    * true</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByWapper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">boolean</span> update = userService.lambdaUpdate().like(User::getName, <span class="string">"雨"</span>).set(User::getAge, <span class="number">28</span>).update();</span><br><span class="line">       System.out.println(update);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 按条件删除记录</span></span><br><span class="line"><span class="comment">    * ==&gt;  Preparing: DELETE FROM user WHERE (name LIKE ?)</span></span><br><span class="line"><span class="comment">    * ==&gt; Parameters: %华%(String)</span></span><br><span class="line"><span class="comment">    * &lt;==    Updates: 3</span></span><br><span class="line"><span class="comment">    * true</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">boolean</span> remove = userService.lambdaUpdate().like(User::getName, <span class="string">"华"</span>).remove();</span><br><span class="line">       System.out.println(remove);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/java/" rel="tag">java</a>, <a class="has-link-grey -link" href="/tags/mybatis/" rel="tag">mybatis</a>, <a class="has-link-grey -link" href="/tags/mybatisplus/" rel="tag">mybatisplus</a>, <a class="has-link-grey -link" href="/tags/springboot/" rel="tag">springboot</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？请作者喝杯☕️吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/logo.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/post/b27447f9.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Java Lambda 使用技巧</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/81e01dcc.html">
+                <span class="level-item">Linux 基本命令</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/logo.png"
+                            alt="Pumpkin">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Pumpkin
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        兴趣使然的软件开发狗
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>BeiJing</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            45
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            23
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            48
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github"
+                href="/">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Facebook"
+                href="/">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter"
+                href="/">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble"
+                href="/">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS"
+                href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            友链
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.flynoob.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">FlyNoob</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.flynoob.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.zhangruipeng.me/hexo-theme-icarus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">ICARUS</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.zhangruipeng.me</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Blog/">
+            <span class="level-start">
+                <span class="level-item">Blog</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DotNet/">
+            <span class="level-start">
+                <span class="level-item">DotNet</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Java/Maven/">
+            <span class="level-start">
+                <span class="level-item">Maven</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/Other/">
+            <span class="level-start">
+                <span class="level-item">Other</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/SpringBoot/">
+            <span class="level-start">
+                <span class="level-item">SpringBoot</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/Tools/">
+            <span class="level-start">
+                <span class="level-item">Tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Linux/CentOS/">
+            <span class="level-start">
+                <span class="level-item">CentOS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/Docker/">
+            <span class="level-start">
+                <span class="level-item">Docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/Git/">
+            <span class="level-start">
+                <span class="level-item">Git</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/MySql/">
+            <span class="level-start">
+                <span class="level-item">MySql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Soft/">
+            <span class="level-start">
+                <span class="level-item">Soft</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Soft/Mac/">
+            <span class="level-start">
+                <span class="level-item">Mac</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Soft/Windows/">
+            <span class="level-start">
+                <span class="level-item">Windows</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Sql/">
+            <span class="level-start">
+                <span class="level-item">Sql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Sql/MsSql/">
+            <span class="level-start">
+                <span class="level-item">MsSql</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Web/">
+            <span class="level-start">
+                <span class="level-item">Web</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Web/Chrome/">
+            <span class="level-start">
+                <span class="level-item">Chrome</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Web/Hexo/">
+            <span class="level-start">
+                <span class="level-item">Hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Web/Html/">
+            <span class="level-start">
+                <span class="level-item">Html</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Web/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Web/Vue/">
+            <span class="level-start">
+                <span class="level-item">Vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/cen-to-s/" style="font-size: 10px;">cen to s</a> <a href="/tags/centos/" style="font-size: 12.5px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/docker/" style="font-size: 17.5px;">docker</a> <a href="/tags/dotnet/" style="font-size: 10px;">dotnet</a> <a href="/tags/firewalld/" style="font-size: 10px;">firewalld</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/html/" style="font-size: 13.75px;">html</a> <a href="/tags/idea/" style="font-size: 11.25px;">idea</a> <a href="/tags/install/" style="font-size: 11.25px;">install</a> <a href="/tags/istat/" style="font-size: 10px;">istat</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/javascript/" style="font-size: 11.25px;">javascript</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/jvisualvm/" style="font-size: 10px;">jvisualvm</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/logger/" style="font-size: 10px;">logger</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mirrors/" style="font-size: 10px;">mirrors</a> <a href="/tags/mssql/" style="font-size: 10px;">mssql</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mybatisplus/" style="font-size: 10px;">mybatisplus</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/nacos/" style="font-size: 10px;">nacos</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/port/" style="font-size: 10px;">port</a> <a href="/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/tags/redis/" style="font-size: 11.25px;">redis</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/soft/" style="font-size: 15px;">soft</a> <a href="/tags/springboot/" style="font-size: 15px;">springboot</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/swagger-ui/" style="font-size: 10px;">swagger-ui</a> <a href="/tags/transactional/" style="font-size: 10px;">transactional</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 16.25px;">web</a> <a href="/tags/zipkin/" style="font-size: 10px;">zipkin</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/post/e32c41be.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idea 自定义 logger 模板">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-12T17:02:00.000Z">2020-10-13</time></div>
+                    <a href="/post/e32c41be.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idea 自定义 logger 模板</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/Other/">Other</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/7c780c79.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring声明式事务@Transactional详解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-27T05:11:00.000Z">2020-05-27</time></div>
+                    <a href="/post/7c780c79.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring声明式事务@Transactional详解</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/SpringBoot/">SpringBoot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/b27447f9.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java Lambda 使用技巧">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-14T05:56:00.000Z">2020-05-14</time></div>
+                    <a href="/post/b27447f9.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java Lambda 使用技巧</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/Other/">Other</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/e1f79887.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MyBatis-Plus 的快速入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T05:54:00.000Z">2020-05-13</time></div>
+                    <a href="/post/e1f79887.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">MyBatis-Plus 的快速入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/SpringBoot/">SpringBoot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/81e01dcc.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux 基本命令">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T17:04:00.000Z">2020-05-06</time></div>
+                    <a href="/post/81e01dcc.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linux 基本命令</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/CentOS/">CentOS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">20</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Lombok/">
+                        <span class="tag">Lombok</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/cen-to-s/">
+                        <span class="tag">cen to s</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/centos/">
+                        <span class="tag">centos</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome/">
+                        <span class="tag">chrome</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/cmd/">
+                        <span class="tag">cmd</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">docker</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dotnet/">
+                        <span class="tag">dotnet</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/firewalld/">
+                        <span class="tag">firewalld</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/html/">
+                        <span class="tag">html</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/idea/">
+                        <span class="tag">idea</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/install/">
+                        <span class="tag">install</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/istat/">
+                        <span class="tag">istat</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java/">
+                        <span class="tag">java</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/junit/">
+                        <span class="tag">junit</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jvisualvm/">
+                        <span class="tag">jvisualvm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jvm/">
+                        <span class="tag">jvm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lambda/">
+                        <span class="tag">lambda</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/logger/">
+                        <span class="tag">logger</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mac/">
+                        <span class="tag">mac</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/maven/">
+                        <span class="tag">maven</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mirrors/">
+                        <span class="tag">mirrors</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mssql/">
+                        <span class="tag">mssql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mybatis/">
+                        <span class="tag">mybatis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mybatisplus/">
+                        <span class="tag">mybatisplus</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mysql/">
+                        <span class="tag">mysql</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nacos/">
+                        <span class="tag">nacos</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/network/">
+                        <span class="tag">network</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/port/">
+                        <span class="tag">port</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/rabbitmq/">
+                        <span class="tag">rabbitmq</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/redis/">
+                        <span class="tag">redis</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/selinux/">
+                        <span class="tag">selinux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/soft/">
+                        <span class="tag">soft</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springboot/">
+                        <span class="tag">springboot</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sql/">
+                        <span class="tag">sql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/swagger-ui/">
+                        <span class="tag">swagger-ui</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/transactional/">
+                        <span class="tag">transactional</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vmware/">
+                        <span class="tag">vmware</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/web/">
+                        <span class="tag">web</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/zipkin/">
+                        <span class="tag">zipkin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/post/e32c41be.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idea 自定义 logger 模板">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-12T17:02:00.000Z">2020-10-13</time></div>
+                    <a href="/post/e32c41be.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idea 自定义 logger 模板</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/Other/">Other</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/7c780c79.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring声明式事务@Transactional详解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-27T05:11:00.000Z">2020-05-27</time></div>
+                    <a href="/post/7c780c79.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring声明式事务@Transactional详解</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/SpringBoot/">SpringBoot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/b27447f9.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Java Lambda 使用技巧">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-14T05:56:00.000Z">2020-05-14</time></div>
+                    <a href="/post/b27447f9.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Java Lambda 使用技巧</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/Other/">Other</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/e1f79887.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="MyBatis-Plus 的快速入门">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T05:54:00.000Z">2020-05-13</time></div>
+                    <a href="/post/e1f79887.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">MyBatis-Plus 的快速入门</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/SpringBoot/">SpringBoot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/post/81e01dcc.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux 基本命令">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T17:04:00.000Z">2020-05-06</time></div>
+                    <a href="/post/81e01dcc.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linux 基本命令</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Linux/">Linux</a> / <a class="has-link-grey -link" href="/categories/Linux/CentOS/">CentOS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">20</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Lombok/">
+                        <span class="tag">Lombok</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/cen-to-s/">
+                        <span class="tag">cen to s</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/centos/">
+                        <span class="tag">centos</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome/">
+                        <span class="tag">chrome</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/cmd/">
+                        <span class="tag">cmd</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">docker</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dotnet/">
+                        <span class="tag">dotnet</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/firewalld/">
+                        <span class="tag">firewalld</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/github/">
+                        <span class="tag">github</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/html/">
+                        <span class="tag">html</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/idea/">
+                        <span class="tag">idea</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/install/">
+                        <span class="tag">install</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/istat/">
+                        <span class="tag">istat</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java/">
+                        <span class="tag">java</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/junit/">
+                        <span class="tag">junit</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jvisualvm/">
+                        <span class="tag">jvisualvm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/jvm/">
+                        <span class="tag">jvm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lambda/">
+                        <span class="tag">lambda</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linux/">
+                        <span class="tag">linux</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/logger/">
+                        <span class="tag">logger</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mac/">
+                        <span class="tag">mac</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/maven/">
+                        <span class="tag">maven</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mirrors/">
+                        <span class="tag">mirrors</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mssql/">
+                        <span class="tag">mssql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mybatis/">
+                        <span class="tag">mybatis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mybatisplus/">
+                        <span class="tag">mybatisplus</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/mysql/">
+                        <span class="tag">mysql</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nacos/">
+                        <span class="tag">nacos</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/network/">
+                        <span class="tag">network</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/port/">
+                        <span class="tag">port</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/rabbitmq/">
+                        <span class="tag">rabbitmq</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/redis/">
+                        <span class="tag">redis</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/selinux/">
+                        <span class="tag">selinux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shell/">
+                        <span class="tag">shell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/soft/">
+                        <span class="tag">soft</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/springboot/">
+                        <span class="tag">springboot</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/sql/">
+                        <span class="tag">sql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/swagger-ui/">
+                        <span class="tag">swagger-ui</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/transactional/">
+                        <span class="tag">transactional</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vmware/">
+                        <span class="tag">vmware</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/web/">
+                        <span class="tag">web</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/zipkin/">
+                        <span class="tag">zipkin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                    
+                    <img src="/images/author.png" alt="MyBatis-Plus 的快速入门" height="28">
+                    
+                </a>
+                <span id="runtime_span">本站已勉强运⾏ --- 天 -- ⼩时 -- 分 -- 秒</span>
+                <script type="text/javascript">
+                    function show_runtime() {
+                        // window.setTimeout("show_runtime()", 1000);
+                        X = new Date("2019-01-21 8:00:00");
+                        Y = new Date();
+                        T = (Y.getTime() - X.getTime());
+                        M = 24 * 60 * 60 * 1000;
+                        a = T / M;
+                        A = Math.floor(a);
+                        b = (a - A) * 24;
+                        B = Math.floor(b);
+                        c = (b - B) * 60;
+                        C = Math.floor((b - B) * 60);
+                        D = Math.floor((c - C) * 60);
+                        runtime_span.innerHTML = "本站已勉强运⾏ " + A + " 天 " + B + " ⼩时 " + C + " 分 " + D + " 秒 ";
+                    }
+                    setInterval("show_runtime()", 500);
+                </script>
+                <p class="is-size-7">
+                    &copy; 2022 Pumpkin&nbsp;
+                    Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                    
+                    <br>
+                    <span id="busuanzi_container_site_uv">
+                        本站总访问量<span id="busuanzi_value_site_uv">0</span>次
+                    </span>
+                    
+                </p>
+            </div>
+            <div class="level-end">
+                
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank"
+                            rel="noopener" title="Creative Commons"
+                            href="https://creativecommons.org/">
+                            
+                            <i class="fab fa-creative-commons"></i>
+                            
+                        </a>
+                    </p>
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank"
+                            rel="noopener" title="Attribution 4.0 International"
+                            href="https://creativecommons.org/licenses/by/4.0/">
+                            
+                            <i class="fab fa-creative-commons-by"></i>
+                            
+                        </a>
+                    </p>
+                    
+                    <p class="control">
+                        <a class="button is-white is-large" target="_blank"
+                            rel="noopener" title="Download on GitHub"
+                            href="https://github.com/ppoffice/hexo-theme-icarus">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                    </p>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            } else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+</footer>
+    <script src="https://fastly.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://x-cy.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://fastly.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://fastly.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://fastly.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://fastly.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://fastly.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
